@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/v1/enterurl', routerPost)
-app.use('/:shortUrl', routerGet)
+app.use('/', routerGet)
 
 
 app.listen(port, () => {

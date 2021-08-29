@@ -10,7 +10,7 @@ routerPost
        .post(PostUrl)
 
 routerGet
-        .route('/')
+        .route('/:shortUrl')
         .get(getUrl)
 
 module.exports= {
