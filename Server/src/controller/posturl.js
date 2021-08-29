@@ -3,13 +3,13 @@ const validUrl = require('valid-url')
 const { nanoid } = require('nanoid')
 
 const PostUrl = async(req, res) => {
-      const longUrl = req.body.longUrl
+      var longUrl = req.body.longUrl
 
       if(!validUrl.isUri(longUrl)){
           res.status(400).json( "Enter a valid Url!!!" )
       }
 
-      const baseUrl = 'http://localhost:3000/'
+      const baseUrl = process.env.BASE_URL
       const urlCode = await nanoid(6)
 
       if(!validUrl.isUri(baseUrl)){
@@ -17,18 +17,18 @@ const PostUrl = async(req, res) => {
       }
 
       try{
-        //  if(!longURL.match(/^(https|http):\/\//)){
-        //     longURL = "http://" + longURL;
-        //  }
+         if(!longUrl.match(/^(https|http):\/\//)){
+            longUrl = "http://" + longURL;
+         }
         
-         var url = await Url.findOne({ longUrl })
+          var url = await Url.findOne({ longUrl })
 
           if(url){
               return res.status(200).json(url)
           }
 
           else{
-              var shortUrl = baseUrl + "/" + urlCode
+              var shortUrl = urlCode
 
               url = new Url({
                   longUrl : longUrl,

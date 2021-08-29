@@ -1,13 +1,19 @@
-const posturl = require('../controller/posturl')
+const { PostUrl } = require('../controller/posturl')
+const { getUrl } = require('../controller/geturl')
 const express = require('express')
 
-const routerPost = new express.Router()
+const routerPost = express.Router()
+const routerGet = express.Router()
 
 routerPost 
        .route('/')
-       .post(posturl.PostUrl)
+       .post(PostUrl)
 
+routerGet
+        .route('/')
+        .get(getUrl)
 
 module.exports= {
-       routerPost
+       routerPost,
+       routerGet
 }

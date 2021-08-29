@@ -6,7 +6,7 @@ require('./db/db')
 const app = express()
 const port = process.env.PORT 
 
-const RouteUrl = require('./src/router/url')
+const { routerPost, routerGet } = require('./src/router/url')
 
 app.use(express.json())
 
@@ -18,7 +18,9 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(publicDirectory, '/html/index.html'))
 })
 
-app.use('/v1/enterurl', RouteUrl.routerPost)
+app.use('/v1/enterurl', routerPost)
+app.use('/:shortUrl', routerGet)
+
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
