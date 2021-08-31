@@ -13,8 +13,9 @@ const getUrl = async (req, res) => {
             return res.status(404).json("Error not found")
         }
 
-       // res.redirect(url.longUrl)
-        res.send(url.longUrl)
+        console.log('Redirecting to' + url.longUrl)
+        res.redirect(url.longUrl)
+       // res.send(url.longUrl)
     }
 
     catch(e){
