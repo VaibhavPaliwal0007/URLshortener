@@ -1,2 +1,5 @@
 # URLshortener
-making a URL short and simple using NodeJS  
+This will let you shorten your Url. 
+https://user-images.githubusercontent.com/78612380/131579164-637566a5-d07e-4fcf-83ef-4dfae69964ca.mov
+
+
