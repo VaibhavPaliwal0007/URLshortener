@@ -16,7 +16,7 @@ const publicDirectory = path.join(__dirname, './public')
 
 app.use(express.static(publicDirectory))
 
-app.use('/', async(req, res) => {
+app.use('/index', async(req, res) => {
     res.send('Hello World')
 })
 
