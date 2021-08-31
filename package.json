@@ -4,7 +4,8 @@
   "description": "making a URL short and simple using NodeJS",
   "main": "index.js",
   "scripts": {
-    "dev": "env-cmd ./config/dev.env nodemon Server/server.js",
+    "dev": "env-cmd ./dev.env nodemon Server/server.js",
+    "prod" : "node Server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -16,10 +16,6 @@ const publicDirectory = path.join(__dirname, './public')
 
 app.use(express.static(publicDirectory))
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(publicDirectory, '/html/index.html'))
-})
-
 app.use('/v1/enterurl', routerPost)
 app.use('/', routerGet)
 
