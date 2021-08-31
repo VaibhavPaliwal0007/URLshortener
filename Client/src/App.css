@@ -3,6 +3,26 @@
     margin-left: 10px;
 }
 
+.input__success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.final__url {
+    color: rgb(41, 71, 86);
+    font-size: 20px;
+    font-weight:300;
+    word-spacing: 1px;
+}
+
+.copy__icon{
+    margin-left: 10px;
+    color:gray;
+    cursor:pointer
+}
+
 a {
     text-decoration: none;
 }

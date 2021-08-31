@@ -3,7 +3,7 @@ const validUrl = require('valid-url')
 const { nanoid } = require('nanoid')
 
 const PostUrl = async(req, res) => {
-      console.log(req)
+    
       var longUrl = req.body.longUrl
 
       if(!validUrl.isUri(longUrl)){

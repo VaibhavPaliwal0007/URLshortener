@@ -1,20 +1,24 @@
 import './App.css';
 import SendIcon from '@material-ui/icons/Send';
+// import FileCopyIcon from '@material-ui/icons/FileCopy';
 import React from 'react';
-import axios from 'axios';
 
 class App extends React.Component {
    
   constructor(props) 
   {
       super(props)
-      this.state = { inputvalue : '' }
+
+      this.state = { inputvalue : '', shortUrl : '' }
+
       this.inputChange = this.inputChange.bind(this)
       this.formSubmit = this.formSubmit.bind(this)
+      // this.copyUrl = this.copyUrl(this)
+
   }
 
   inputChange(event) { 
-      this.setState({ inputvalue : this.state.inputvalue + event.target.value })
+      this.setState({ inputvalue : event.target.value })
   }
 
   async formSubmit(event) {
@@ -24,14 +28,20 @@ class App extends React.Component {
       this.setState({ inputvalue : '' });
       const url = process.env.REACT_APP_URL + '/v1/enterurl/'
 
-  
-        const response = fetch(url, {
-        method : "POST",
-        body : JSON.stringify({ 'longUrl' : longUrl })
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-      }
+      const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              longUrl: longUrl
+          })
+      })
+
+      const data = await response.json();
+      this.setState({shortUrl : data.shortUrl});
+      
+    }
 
   render () { return (
       <div className="app">
@@ -56,6 +66,15 @@ class App extends React.Component {
               <button onClick = { this.formSubmit } className="input__button"><SendIcon/></button>
             </form>
           </div>
+          {
+            this.state.shortUrl ? <div className="input__success">
+              <h3 style = {{color:"green",marginRight:"20px"}}>Success !!! This is the shorten url : </h3>
+              <div>
+                <a className = "final__url" href={process.env.REACT_APP_URL+"/"+this.state.shortUrl}>{process.env.REACT_APP_URL+"/"+this.state.shortUrl}</a>
+                {/* <FileCopyIcon className = "copy__icon" onClick={this.copyUrl}/> */}
+              </div>
+            </div>:<div/>
+          }
         </div>
       </div>
   );
