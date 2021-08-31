@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const cors = require('cors')
 
 require('./db/db')
 
@@ -9,6 +10,7 @@ const port = process.env.PORT
 const { routerPost, routerGet } = require('./src/router/url')
 
 app.use(express.json())
+app.use(cors())
 
 const publicDirectory = path.join(__dirname, './public')
 
