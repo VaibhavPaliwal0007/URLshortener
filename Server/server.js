@@ -5,7 +5,7 @@ const cors = require('cors')
 require('./db/db')
 
 const app = express()
-const port = process.env.PORT 
+const port = process.env.PORT || 80
 
 const { routerPost, routerGet } = require('./src/router/url')
 
