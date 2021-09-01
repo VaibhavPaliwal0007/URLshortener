@@ -20,8 +20,17 @@ app.use('/index', async(req, res) => {
     res.send('Hello World')
 })
 
+
 app.use('/v1/enterurl', routerPost)
 app.use('/', routerGet)
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Url-Shortener',
+        errorMessage: 'Page not found.'
+    })
+})
 
 
 app.listen(port, () => {

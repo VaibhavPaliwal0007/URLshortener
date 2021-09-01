@@ -18,9 +18,9 @@ const PostUrl = async(req, res) => {
       }
 
       try{
-          if(!longUrl.match(/^(https|http):\/\//)){
-            longUrl = "http://" + longURL;
-          }
+        //   if(!longUrl.match(/^(https|http):\/\//)){
+        //     longUrl = "http://" + longURL;
+        //   }
         
           var url = await Url.findOne({ longUrl })
 
